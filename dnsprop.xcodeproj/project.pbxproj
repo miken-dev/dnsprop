@@ -12,7 +12,8 @@
 		0C53F6E42BCF3CE800FD7261 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C53F6E32BCF3CE800FD7261 /* Assets.xcassets */; };
 		0C53F6E72BCF3CE800FD7261 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C53F6E62BCF3CE800FD7261 /* Preview Assets.xcassets */; };
 		0C53F6EF2BCF3EAA00FD7261 /* locationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53F6EE2BCF3EAA00FD7261 /* locationViews.swift */; };
-		0C53F6F12BCF552800FD7261 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53F6F02BCF552800FD7261 /* Model.swift */; };
+		0C53F6F12BCF552800FD7261 /* appData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53F6F02BCF552800FD7261 /* appData.swift */; };
+		0CA120CC2BCF5D8E0032ACE1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA120CB2BCF5D8E0032ACE1 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +24,8 @@
 		0C53F6E62BCF3CE800FD7261 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C53F6E82BCF3CE800FD7261 /* dnsprop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dnsprop.entitlements; sourceTree = "<group>"; };
 		0C53F6EE2BCF3EAA00FD7261 /* locationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationViews.swift; sourceTree = "<group>"; };
-		0C53F6F02BCF552800FD7261 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0C53F6F02BCF552800FD7261 /* appData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appData.swift; sourceTree = "<group>"; };
+		0CA120CB2BCF5D8E0032ACE1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +61,8 @@
 				0C53F6DF2BCF3CE700FD7261 /* dnspropApp.swift */,
 				0C53F6E12BCF3CE700FD7261 /* ContentView.swift */,
 				0C53F6EE2BCF3EAA00FD7261 /* locationViews.swift */,
-				0C53F6F02BCF552800FD7261 /* Model.swift */,
+				0C53F6F02BCF552800FD7261 /* appData.swift */,
+				0CA120CB2BCF5D8E0032ACE1 /* Model.swift */,
 				0C53F6E32BCF3CE800FD7261 /* Assets.xcassets */,
 				0C53F6E82BCF3CE800FD7261 /* dnsprop.entitlements */,
 				0C53F6E52BCF3CE800FD7261 /* Preview Content */,
@@ -145,10 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CA120CC2BCF5D8E0032ACE1 /* Model.swift in Sources */,
 				0C53F6EF2BCF3EAA00FD7261 /* locationViews.swift in Sources */,
 				0C53F6E22BCF3CE700FD7261 /* ContentView.swift in Sources */,
 				0C53F6E02BCF3CE700FD7261 /* dnspropApp.swift in Sources */,
-				0C53F6F12BCF552800FD7261 /* Model.swift in Sources */,
+				0C53F6F12BCF552800FD7261 /* appData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

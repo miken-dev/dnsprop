@@ -6,8 +6,3 @@
 //
 
 import Foundation
-
-struct Model: Identifiable {
-	var id: String
-	
-}

@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
 	@State private var url = ""
-	var dataCenters = ["US-East", "US-West", "Canada-East", "Canada-West", "England", "Spain", "Japan"]
+	@State private var IPs = [""]
 	var body: some View {
 		Form {
 			HStack {
-			TextField("URL", text: $url)
-				.padding()
-				.textFieldStyle(.roundedBorder)
+				TextField("URL", text: $url)
+					.padding()
+					.textFieldStyle(.roundedBorder)
 				Button("Submit") {
-					//Do stuff
+					IPs = checkDNS(url)
 				}
 			}
 			.padding()
@@ -27,17 +27,35 @@ struct ContentView: View {
 				locationView(dataCenter: dataCenter, status: statusState.online, IPs: ["10.0.0.200", "10.0.0.250"])
 				
 			}
-			locationView(dataCenter: "US-West", status: statusState.online, IPs: ["10.0.0.2", "10.0.0.3"])
-			locationView(dataCenter: "Offline", status: statusState.offline, IPs: [""])
-			locationView(dataCenter: "Checking", status: statusState.checking, IPs: [""])
-			locationView(dataCenter: "Waiting", status: statusState.waiting, IPs: [""])
-			locationView(dataCenter: "Can't Connect", status: statusState.cannotConnect, IPs: [""])
+			locationView(dataCenter: "US-West", status: statusState.online, IPs: IPs)
+			locationView(dataCenter: "Offline", status: statusState.offline, IPs: IPs)
+			locationView(dataCenter: "Checking", status: statusState.checking, IPs: IPs)
+			locationView(dataCenter: "Waiting", status: statusState.waiting, IPs: IPs)
+			locationView(dataCenter: "Can't Connect", status: statusState.cannotConnect, IPs: IPs)
 
 
 		}
 		.padding()
 		Spacer()
     }
+	
+	
+	private func checkDNS(_ url: String) -> [String] {
+	var ipList: [String] = []
+	let host = CFHostCreateWithName(nil,url as CFString).takeRetainedValue()
+	CFHostStartInfoResolution(host, .addresses, nil)
+	var success: DarwinBoolean = false
+	if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray? {
+		for case let theAddress as NSData in addresses {
+			var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+			if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
+						   &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
+				ipList.append(String(cString: hostname))
+			}
+		}
+	}
+	return ipList
+	}
 }
 
 #Preview {

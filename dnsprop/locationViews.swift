@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-enum statusState {
-	case online, offline, checking, cannotConnect, waiting
-}
 struct locationView: View {
 
 	var dataCenter: String
@@ -50,5 +47,5 @@ struct locationView: View {
 }
 
 #Preview {
-	locationView(dataCenter: "US-West", status: statusState.waiting, IPs: ["10.0.0.1", "10.0.0.2"])
+	locationView(dataCenter: "US-West", status: statusState.checking, IPs: ["10.0.0.1", "10.0.0.2"])
 }
