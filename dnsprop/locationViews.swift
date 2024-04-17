@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum statusState {
-	case online, offline, checking, cannotConnect
+	case online, offline, checking, cannotConnect, waiting
 }
 struct locationView: View {
 
@@ -23,6 +23,10 @@ struct locationView: View {
 				Image(systemName: "network.slash")
 					.foregroundColor(.red)
 			}
+			if status == statusState.cannotConnect {
+				Image(systemName: "exclamationmark.magnifyingglass")
+					.foregroundColor(.red)
+			}
 			if status == statusState.online {
 				VStack {
 					ForEach (IPs, id: \.self) { ip in
@@ -33,8 +37,11 @@ struct locationView: View {
 								.foregroundColor(.green)
 						}
 					}
-
 				}
+			}
+			if status == statusState.checking {
+				ProgressView()
+					.controlSize(.small)
 			}
 		}
 		.padding(5)
@@ -42,5 +49,5 @@ struct locationView: View {
 }
 
 #Preview {
-	locationView(dataCenter: "US-West", status: statusState.online, IPs: ["10.0.0.1", "10.0.0.2"])
+	locationView(dataCenter: "US-West", status: statusState.waiting, IPs: ["10.0.0.1", "10.0.0.2"])
 }
