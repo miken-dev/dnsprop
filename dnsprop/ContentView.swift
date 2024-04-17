@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 	@State private var url = ""
-    var body: some View {
+
+	var body: some View {
 		Form {
 			HStack {
 			TextField("URL", text: $url)
@@ -22,11 +23,9 @@ struct ContentView: View {
 			.padding()
 		}
 		VStack {
-			locationView(dataCenter: "US-West", status: true, firstIP: "10.0.0.1", secondIP: "10.0.0.2")
-			locationView(dataCenter: "US-East", status: true, firstIP: "10.0.0.1", secondIP: "10.0.0.2")
-			locationView(dataCenter: "Canada-West", status: false, firstIP: "10.0.0.1")
-			locationView(dataCenter: "Canada-East", status: true, firstIP: "10.0.0.1")
-			
+			locationView(dataCenter: "US-West", status: statusState.online, IPs: ["10.0.0.2", "10.0.0.3"])
+			locationView(dataCenter: "US-West", status: statusState.offline, IPs: [""])
+
 		}
 		.padding()
 		Spacer()

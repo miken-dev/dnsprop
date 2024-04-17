@@ -7,35 +7,33 @@
 
 import SwiftUI
 
+enum statusState {
+	case online, offline, checking, cannotConnect
+}
 struct locationView: View {
+
 	var dataCenter: String
-	var status: Bool
-	var firstIP: String
-	var secondIP: String?
+	var status: statusState
+	var IPs: [String]
 	var body: some View {
 		HStack {
 			Text("\(dataCenter):")
 			Spacer()
-			if !status {
+			if status == statusState.offline {
 				Image(systemName: "network.slash")
 					.foregroundColor(.red)
-			} else {
+			}
+			if status == statusState.online {
 				VStack {
-					HStack {
-						Spacer()
-						Text(firstIP)
-						Image(systemName: "network")
-							.foregroundColor(.green)
-					}
-					if secondIP != nil {
+					ForEach (IPs, id: \.self) { ip in
 						HStack {
 							Spacer()
-							Text(secondIP!)
+							Text(ip)
 							Image(systemName: "network")
 								.foregroundColor(.green)
 						}
-						
 					}
+
 				}
 			}
 		}
@@ -44,5 +42,5 @@ struct locationView: View {
 }
 
 #Preview {
-	locationView(dataCenter: "US-West", status: true, firstIP: "10.0.0.1", secondIP: "10.0.0.2")
+	locationView(dataCenter: "US-West", status: statusState.online, IPs: ["10.0.0.1", "10.0.0.2"])
 }
