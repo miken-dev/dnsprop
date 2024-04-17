@@ -45,6 +45,7 @@ struct locationView: View {
 			}
 		}
 		.padding(5)
+		.border(Color.secondary)
     }
 }
 
